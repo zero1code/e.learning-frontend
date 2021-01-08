@@ -21,7 +21,9 @@ export const Title = styled.Text`
   width: 225px;
   height: 86px;
   margin-left: 30px;
-  font-size: 36px;
+
+  font-family: 'Rubik-Medium';
+  font-size: 30px;
   line-height: 42px;
   color: #ff6680;
 `;
@@ -30,6 +32,7 @@ export const Description = styled.Text`
   height: 100px;
   margin-top: 20px;
 
+  font-family: 'Rubik-Regular';
   color: #fff;
   font-size: 16px;
   line-height: 30px;
@@ -50,4 +53,5 @@ export const StartButton = styled(RectButton)`
 export const StartButtonText = styled.Text`
   font-size: 15px;
   color: #fff;
+  font-family: 'Rubik-Regular';
 `;
