@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {StatusBar} from 'react-native';
+import {StatusBar, SafeAreaView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import {
@@ -24,8 +24,9 @@ const Home: React.FC = () => {
   }, [navigation]);
 
   return (
-    <>
+    <SafeAreaView>
       <StatusBar backgroundColor="#6548a3" />
+
       <Container>
         <BackgroundImage source={eLogo} />
         <LogoImage source={logoImage} />
@@ -37,7 +38,7 @@ const Home: React.FC = () => {
           <StartButtonText>Começar com os estudos</StartButtonText>
         </StartButton>
       </Container>
-    </>
+    </SafeAreaView>
   );
 };
 
