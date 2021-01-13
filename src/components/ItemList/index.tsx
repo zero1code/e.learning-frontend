@@ -1,6 +1,12 @@
 import React from 'react';
 
-import {Container, CourseImage, CourseTitle, CourseQuantity} from './styles';
+import {
+  Container,
+  ContainerImage,
+  CourseImage,
+  CourseTitle,
+  CourseQuantity,
+} from './styles';
 
 interface ItemListPros {
   image: string;
@@ -8,10 +14,18 @@ interface ItemListPros {
   quantity: string;
 }
 
-const ItemList: React.FC<ItemListPros> = ({image, quantity, title}) => {
+const ItemList: React.FC<ItemListPros> = ({
+  image,
+  quantity,
+  title,
+  children,
+}) => {
   return (
-    <Container>
-      <CourseImage source={image} />
+    <Container activeOpacity={0.6}>
+      <ContainerImage>
+        <CourseImage source={image} />
+        {children}
+      </ContainerImage>
       <CourseTitle>{title}</CourseTitle>
       <CourseQuantity>{quantity}</CourseQuantity>
     </Container>

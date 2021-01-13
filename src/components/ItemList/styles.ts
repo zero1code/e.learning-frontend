@@ -4,7 +4,7 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   margin-top: ${hp('1.14%')};
   margin-bottom: ${hp('1.14%')};
   margin-left: ${wp('2.44%')};
@@ -14,6 +14,11 @@ export const Container = styled.View`
   height: ${hp('19.63%')};
   border-radius: ${wp('3.91%')};
   background: #fff;
+`;
+
+export const ContainerImage = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const CourseImage = styled.Image`

@@ -50,6 +50,7 @@ const Dashboard: React.FC = () => {
                 title={provider.title}
                 image={provider.image_url}
                 quantity={provider.quantity}
+                screen="Dashboard"
               />
             )}
           />
