@@ -3,6 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import TabRoutes from './tab.routes';
 import Home from '../pages/Home';
+import Classes from '../pages/Classes';
 import Splash from '../pages/Splash';
 
 const App = createStackNavigator();
@@ -24,6 +25,7 @@ const Routes: React.FC = () => {
           gestureEnabled: false,
         }}
       />
+      <App.Screen name="Classes" component={Classes} />
     </App.Navigator>
   );
 };

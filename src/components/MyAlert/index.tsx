@@ -21,7 +21,7 @@ interface MyAlertProps {
 }
 
 const MyAlert: React.FC<MyAlertProps> = ({courseName}) => {
-  const {showOrHideAlert, showAlert} = myUseContext(Context);
+  const {showOrHideAlert, showAlert} = myUseContext();
   return (
     <Container>
       <MyModal

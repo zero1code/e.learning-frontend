@@ -1,18 +1,27 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {SafeAreaView} from 'react-native';
 import Header from '../../components/Header';
 import SearchInput from '../../components/SearchInput';
-import ItemList from '../../components/ItemList';
+import {useNavigation} from '@react-navigation/native';
+import logoImage from '../../assets/images/logo.png';
 
 import database from '../../database';
 
 import {
-  HomeContainer,
+  Container,
+  HeaderContainer,
+  Icon,
+  Logo,
   CategoriesContainer,
   CategoriesText,
   CoursesQuantityText,
   ListContainer,
   CategoriesList,
+  CourseContainer,
+  ContainerImage,
+  CourseImage,
+  CourseTitle,
+  CourseQuantity,
 } from './styles';
 
 export interface Provider {
@@ -24,17 +33,27 @@ export interface Provider {
 
 const Dashboard: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
+  const navigation = useNavigation();
+
+  const handleToClasses = useCallback(() => {
+    navigation.navigate('Classes');
+  }, [navigation]);
 
   return (
     <SafeAreaView>
-      <Header>
+      <HeaderContainer>
+        <Header>
+          <></>
+          <Logo source={logoImage} />
+          <Icon size={25} name="power" color="#ff6680" />
+        </Header>
         <SearchInput
           value={searchValue}
           onChangeText={setSearchValue}
           placeholder="Busque um curso"
         />
-      </Header>
-      <HomeContainer>
+      </HeaderContainer>
+      <Container>
         <CategoriesContainer>
           <CategoriesText>Categorias</CategoriesText>
           <CoursesQuantityText>43 cursos</CoursesQuantityText>
@@ -46,16 +65,17 @@ const Dashboard: React.FC = () => {
             numColumns={2}
             keyExtractor={(item) => item.id}
             renderItem={({item: provider}) => (
-              <ItemList
-                title={provider.title}
-                image={provider.image_url}
-                quantity={provider.quantity}
-                screen="Dashboard"
-              />
+              <CourseContainer onPress={handleToClasses} activeOpacity={0.6}>
+                <ContainerImage>
+                  <CourseImage source={provider.image_url} />
+                </ContainerImage>
+                <CourseTitle>{provider.title}</CourseTitle>
+                <CourseQuantity>{provider.quantity}</CourseQuantity>
+              </CourseContainer>
             )}
           />
         </ListContainer>
-      </HomeContainer>
+      </Container>
     </SafeAreaView>
   );
 };
