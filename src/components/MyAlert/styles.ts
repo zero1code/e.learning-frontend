@@ -8,7 +8,6 @@ import {
 export const Container = styled.View`
   justify-content: center;
   align-items: center;
-  justify-content: center;
   flex: 1;
 `;
 
@@ -17,9 +16,9 @@ export const MyModal = styled.Modal``;
 export const ModalContainer = styled.View`
   justify-content: center;
   align-items: center;
-  justify-content: center;
   flex: 1;
   height: ${hp('40%')};
+  background: rgba(0, 0, 0, 0.5);
 `;
 
 export const ModalView = styled.View`

@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, Alert} from 'react-native';
+import {myUseContext} from '../../contexts/context';
 
 import {
   Container,
@@ -16,19 +17,17 @@ import {
 } from './styles';
 
 interface MyAlertProps {
-  visible: boolean;
   courseName: string;
 }
 
-const MyAlert: React.FC<MyAlertProps> = ({visible, courseName}) => {
-  const [alertVisible, setAlertVisible] = useState(visible);
-
+const MyAlert: React.FC<MyAlertProps> = ({courseName}) => {
+  const {showOrHideAlert, showAlert} = myUseContext(Context);
   return (
     <Container>
       <MyModal
         animationType="fade"
         transparent={true}
-        visible={alertVisible}
+        visible={showAlert}
         onRequestClose={() => {
           Alert.alert('Modal has been closed.');
         }}>
@@ -40,7 +39,7 @@ const MyAlert: React.FC<MyAlertProps> = ({visible, courseName}) => {
               <CancelButton
                 underlayColor="#0000001a"
                 onPress={() => {
-                  setAlertVisible(!visible);
+                  showOrHideAlert();
                 }}>
                 <CancelButtonText>Não!</CancelButtonText>
               </CancelButton>

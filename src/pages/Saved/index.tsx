@@ -4,6 +4,7 @@ import Header from '../../components/Header';
 import SearchInput from '../../components/SearchInput';
 import ItemList from '../../components/ItemList';
 import MyAlert from '../../components/MyAlert';
+import {myUseContext} from '../../contexts/context';
 
 import database from '../../database';
 
@@ -27,13 +28,9 @@ export interface Provider {
 const Saved: React.FC = () => {
   const [searchValue, setSearchValue] = useState('');
   const [selectedCourse, setSelectedCourse] = useState('');
-  const [alertVisible, setAlertVisible] = useState(false);
+  // const [alertVisible, setAlertVisible] = useState(false);
 
-  function showAlert() {
-    if (alertVisible) {
-      return <MyAlert courseName={selectedCourse} visible={alertVisible} />;
-    }
-  }
+  const {showOrHideAlert, showAlert} = myUseContext(Context);
 
   return (
     <SafeAreaView>
@@ -62,7 +59,7 @@ const Saved: React.FC = () => {
                 <DeleteCourseButton
                   activeOpacity={0.3}
                   onPress={() => {
-                    setAlertVisible(!alertVisible);
+                    showOrHideAlert();
                     setSelectedCourse(provider.title);
                   }}>
                   <Icon name="trash" color="#c4c4d1" size={16} />
@@ -72,7 +69,11 @@ const Saved: React.FC = () => {
           />
         </ListContainer>
       </Container>
-      {showAlert()}
+      {showAlert ? (
+        <MyAlert courseName={selectedCourse} visible={showAlert} />
+      ) : (
+        <></>
+      )}
     </SafeAreaView>
   );
 };
