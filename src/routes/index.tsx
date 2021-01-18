@@ -1,10 +1,11 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import TabRoutes from './tab.routes';
-import Home from '../pages/Home';
-import Classes from '../pages/Classes';
 import Splash from '../pages/Splash';
+import Home from '../pages/Home';
+import TabRoutes from './tab.routes';
+import Classes from '../pages/Classes';
+import VideoClass from '../pages/VideoClass';
 
 const App = createStackNavigator();
 
@@ -26,6 +27,7 @@ const Routes: React.FC = () => {
         }}
       />
       <App.Screen name="Classes" component={Classes} />
+      <App.Screen name="VideoClass" component={VideoClass} />
     </App.Navigator>
   );
 };
